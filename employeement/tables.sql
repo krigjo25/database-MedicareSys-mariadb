@@ -1,31 +1,5 @@
-/***************************************************************
-Comments such as the one below indicates, it has to be made after the the given table
 
---  Comment
-
-This file contains tables which is placed in patients
-
-DATABASE
-
-employee,
-    Tables
-        employees,
-        relations
-        turnus
-
-***************************************************************/
-/******************************** SalaryInfo **************************************************************/
-CREATE OR REPLACE TABLE salaryInfo (
-                        --  Table Columns
-                        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                        occupation VARCHAR(255) NOT NULL, 
-                        yearlySalary DECIMAL(10,2) NOT NULL,
-                        monthlySalary DECIMAL(7,2) NOT NULL,
-                        hourlySalary DECIMAL (5,2) NOT NULL,
-
-                        --  Constraints
-                        INDEX(occupation));
-/*************************************************************************************************************/
+-- This file contains tables which is placed in patients
 
 /******************************** Employee *******************************************************************/
 

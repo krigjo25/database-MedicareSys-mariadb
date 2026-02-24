@@ -85,20 +85,3 @@ CREATE OR REPLACE TABLE socialSecurityNumber (
                         INDEX (patientID),
                         CONSTRAINT patientID_fk FOREIGN KEY(patientID) REFERENCES patients.patient(id) ON DELETE CASCADE ON UPDATE CASCADE);
 /*********************************************************************************************************/
-
-/************************************* Billings **********************************************************/
-DELIMITER
-CREATE TABLE billing (
-                    --  Table Columns
-                        id BIGINT NOT NULL UNIQUE AUTO_INCREMENT,
-                        invoiceID INT NOT NULL UNIQUE, -- AUTO_INCREMENT PRIMARY KEY, AUTO_INCREMENT=300000 
-                        patientID BIGINT SIGNED NOT NULL,
-                        discount TINYINT NOT NULL,
-                        incTax DECIMAL(11,2),
-                        overDue DATE NOT NULL,
-                        paymentStatus TINYINT NOT NULL DEFAULT 0,
-                    
-                    -- Table Constraints
-                        INDEX (patientID),
-                        CONSTRAINT patientID_FK FOREIGN KEY (patientID) REFERENCES patientRegistrations (patientID) ON DELETE CASCADE);
-/*************************************************************************************************************/

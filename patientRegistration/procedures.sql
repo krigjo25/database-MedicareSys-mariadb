@@ -4,9 +4,8 @@ This file contains the Procedures which is used in the project
 
 
 Patient Procedures,
-Billing Proceduures,
 
-/***************************************************************/
+***************************************************************/
 
 /*********************** Patients Procedures ******************************/
 DELIMITER x
