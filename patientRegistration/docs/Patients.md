@@ -1,97 +1,32 @@
-# Patient Table
+# Summary: Patient Management, Billing, and Dynamic Health Records
 
-The patient table, should include necsessary information, for the assigned Doctor<br>
-to do the necsessary treatment for the patient. Would like to have the patient details<br>
-in a own Database, for easier maintance.
+### 1. Patient Database and Core Information
+* **Database Isolation**: Patient details are stored in a dedicated database to ensure easier maintenance and organized data management.
+* **Data Content**: The database captures general information, health history, and the patient's profession to assist assigned doctors in treatment.
+* **Management Procedures**:
+    * `newPatient()`: Registers a new patient into the database.
+    * `modifyPatient()`: Updates existing patient information.
+    * `newTable()`: Creates a new record entry within the `patientInfo` section.
+* **Data Processing**: Functions are used to convert SSN and phone digits, while BMI calculations are handled externally via Python code.
 
-## Patient Information**
-
-Information which is needed from the patient incldes some general information<br>
-the patient's health, and proffesion.
-
-| pID | patientName | ssn | gender | mobile| street | zipCode | companyName | industry | BodyWeight | bodyHeight | bodyMassIndex | bloodType | DiseaseID | alergyID | medecineID | dateIn | dateOut |
-|--- |--- |--- |---	|--- |--- |--- |---	|--- |--- |---	|--- |--- |--- |---	|--- |--- |--- |
-
- Constraints |
-|---	|
-| Unique |
-| patientID |
-| patientName |
-| |
-| FOREIGN KEY |
-| medecine |
-| diagnosisCode |
-| alergies |
-| medecine |
-
-##  Procedures
-
-###  Register a new patient to the database
-- CALL newPatient()
-
-###  Modify patient information
-- CALL modifyPatient()
-
-###    Create a new record in patientInfo
-
--   Call newTable();
-
-##  Functions
-
-*   Convert ssn digits
-*   Convert phone digits
-*   [s]Calculate the BMI of a patient[/s] - The bmi gets calculated in the python code
--   generateTable(vName, vssn)
-
-##  Events
-
-*   When the patient is registered in the database, generate a PDF document
-*   When the patient information gets updaed, the PDF regenerates
-
-##  Trigger
-
-When the patient gets registered for the first time in the<br>
-database. Create a PDF containing the personal info, alergies, diagnosis<br>
-( where the recommended treatments get fetched from the database)
-
-##  Python Code
-Goto [PatientJournal.md]()
-
-        
-
-# Billing system
-
-This system can fetch fetch necsessary columns from the different tables, in order to calculate the bill,<br> 
-then create an invoice for the patient.
-
-The invoice fetches
-
-*   Visited rooms, procedures done any extra treatments
+### 2. Automated Documentation and PDF Events
+* **Registration Trigger**: A trigger fires upon the first registration to create a PDF containing personal info, allergies, and diagnosis-based treatments.
+* **Dynamic PDF Updates**: An event automatically regenerates the patient's PDF document whenever their information is updated.
+* **Recovery Event**: A specific event triggers the creation of a final PDF once the patient has recovered.
 
 
-##  BillingSystem Table
 
-| patientID | invoiceID | incTax | reminder | overdue |
-|--- |--- |--- |--- |--- |--- |
+### 3. Dynamic Patient Health Records (Patient Info DB)
+* **SSN-Based Tables**: This database uses a unique naming convention for health data tables (first 3 letters of name + last 4 digits of SSN) to identify patients.
+* **Dynamic Updates**: Tables are updated automatically every time a patient undergoes a procedure at the hospital.
+* **Cross-Database Trigger**: Registering a patient in the main `patient` table automatically triggers the creation of their specific health data table.
 
-### Procedures
-
-####  Insert necsessary values to create the pdf file
--    CALL newBilling (vpID)                 
-
-####  Updates the values, if wrongly added
-    CALL updateBilling (vColumn, vpID)
-
-### Triggers
-
-After the overdue, trigger a record into credited table<br>
-else trigger a record  into paidBillings table
-
-### Events
-
-*   When the first overdue has passed on the invoice, trigger a new overdue, add a fine.
-*   When the patient has been recovered trigger a pdf creation 
-
-### PythonCode
-
-Goto [Invoice.md]() 
+### 4. Billing System and Financial Logic
+* **Invoice Composition**: The system fetches data on visited rooms, procedures performed, and extra treatments to calculate the final bill.
+* **Billing Table Structure**: Tracks `patientID`, `invoiceID`, tax status (`incTax`), reminders, and overdue status.
+* **Financial Procedures**:
+    * `newBilling(vpID)`: Inserts the necessary values required to generate the invoice PDF.
+    * `updateBilling()`: Allows for the correction of billing values if they were added incorrectly.
+* **Overdue and Payment Triggers**:
+    * **Automation**: An event monitors the due date; if missed, it triggers a new overdue notice and adds a fine.
+    * **Archiving**: Records are triggered into the `credited` table if overdue, or the `paidBillings` table upon successful payment.

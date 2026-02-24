@@ -1,21 +1,20 @@
-# About the project case
+# Project Case Summary: Hospital Management System
 
-Create (a) database(es) with full patient details and employee details
+### 1. Database & Entity Scope
+* **Comprehensive Records**: The system requires the creation of databases containing full details for both patients and employees.
+* **Patient Profiles**: Patient tables must include personal details, work-related information, and specific health data.
+* **Employee Identification**: Every employee will be assigned a unique `employeeID` for identification and tracking.
 
-The patient table will include<br>
-Personal details, work related information and health information
-    
-The Doctor will handle patients, one doctor can treat up to ten patient<br>
-Also each employee will have an unique employeeID, Doctors and patient<br>
-will be related to eachoter. 
+### 2. Clinical Relationships & Capacity
+* **Doctor-Patient Mapping**: Doctors and patients will be linked via defined relationships.
+* **Workload Constraints**: A strict limit is set where one doctor can treat a maximum of ten patients at a time.
+* **Support Staff**: The hospital infrastructure includes nurses and ward boys dedicated to maintenance and direct patient care.
 
-So by creating a hospital, there has to be different rooms, such as
+### 3. Hospital Infrastructure
+* **Facility Zones**: The hospital must be organized into distinct functional areas, specifically:
+    * Operation Theaters
+    * Intensive Care Units (ICU)
+    * Emergency Services
 
-* Operation Theaters
-* ICU
-* Emergency services
-
-The hospital would need some nurses, ward boys for the maintance <br>
-of the hospital and for patient care.
-
-Based upon the number of days and treatment bill will be generated.
+### 4. Billing & Financial Logic
+* **Invoice Generation**: Bills are generated based on the duration of the hospital stay (number of days) and the specific treatments received.

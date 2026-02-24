@@ -1,18 +1,19 @@
-# Archive
-This database is an archive for "paid billings", "billingCredit" and terminated employees.
+# Database Archive Summary
 
-When a bill gets paid a trigger will trigger a new row in "paidBillings"<br>
-table, if its not paid untill overdue date, the bill will be moved into 'billCredited',<br>
-then there will be added a fine.<br>
+### 1. Payment and Billing Lifecycle
+* **Archive Purpose**: This database serves as a permanent archive for `paidBillings`, `billCredited`, and `terminatedEmployee` records.
+* **Payment Trigger**: When a bill is settled, a database trigger automatically generates a new row in the `paidBillings` table.
+* **Overdue Handling**: If a bill remains unpaid past the due date, it is moved to the `billCredited` table, and a fine is automatically applied.
+* **Debt Collection**: Once payments are successfully retrieved by credit collectors, the record is moved back from `billCredited` into the `paidBillings` archive.
 
-When the credit collectors has retrieved the payment the payment<br>
-will be moved into paidBillings.
+### 2. Employee Offboarding
+* **Termination Records**: Whenever an employee resigns or is dismissed, their data is registered within the `terminatedEmployee` table for historical tracking.
 
-Whenever an employee resigns or gets fired the employee will be registered in the terminatedEmployee table.
-
-[Visualization over Tables](./archive-erdiagram.md)
-[Visualization over sequences](./archive-sequencediagram.md)
-
+### 3. Automated Monitoring
+* **Payment Verification Event**: An automated event is scheduled to verify whether patients have paid their respective bills.
 **Event**
 
 * An event will be trigged to check wheter the patient has paid the given bill.
+[Visualization over Tables](./archive-erdiagram.md)
+[Visualization over sequences](./archive-sequencediagram.md)
+
