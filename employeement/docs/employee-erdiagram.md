@@ -3,10 +3,11 @@
 title: "Employee Registration ER Diagram"
 ---
 erDiagram
+    Occupation ||--o{ SalaryInfo: "Defines"
     Employee ||--o{ Employee_log : "Generates"
     Employee ||--o{ Occupation : "Decides Role"
     Employee ||--o{ Patient_relationship : "Provider"
-    Occupation ||--o{ SalaryInfo: "Defines"
+    
 
     Employee {
         BIGINT id PK "UNSIGNED AUTO INCREMENT"
@@ -48,4 +49,11 @@ erDiagram
         VARCHAR(255) PatientID FK "References to Patient table"
         VARCHAR(255) EmployeeID FK "References to Employee table"
     }
+
+    classDef highlight color: #f5f5f5, stroke: #007acc, stroke-width:3px
+    classDef regular color: #f5f5f5, stroke: #555555, stroke-width:1px
+    classDef default color: #f5f5f5, stroke: #D3D3D3, stroke-width:1px
+
+    Employee ::: highlight
+    SalaryInfo ::: regular
 ```

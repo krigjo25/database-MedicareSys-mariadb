@@ -26,4 +26,10 @@ erDiagram
         DECIMAL amount "(10,2) NOT NULL"
         DATE billing_date "NOT NULL"
     }
+
+    classDef default color: #f5f5f5, stroke: #D3D3D3, stroke-width:1px
+    classDef highlight color: #f5f5f5, stroke: #007acc, stroke-width:3px
+
+    OCCUPATION::: highlight
+    PATIENT ::: highlight
 ```
