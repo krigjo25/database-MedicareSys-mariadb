@@ -1,24 +1,18 @@
 ```mermaid
 ---
-title: "Employee Sequence Diagram"
+title: "Employee database relationship Sequence Diagram"
 ---
 sequenceDiagram
-    participant Admin as User/Management
-    participant Proc as PROCEDURE: newEmployee
-    participant Func as FUNCTION: calculateSalary
-    participant SI as TABLE: salaryInfo
-    participant ER as TABLE: employeeRecords
+    participant EMP as employee(Table)
+    participant ELOG as EmployeeLog(Table)
+    participant OCC as Occupation(Table)
+    participant ACC as Accounting(Table)
+    participant PR as Patient_Relationship(Table)
 
-    Admin->>Proc: CALL newEmployee(details, vTitle, veStatus)
-    
-    Proc->>SI: SELECT occupation INTO tilt
-    Note over Proc: Validerer om stilling eksisterer
-    
-    Proc->>Func: CALL calculateSalary(vTitle, veStatus)
-    Func->>SI: OPEN cursor FOR hourlySalary
-    SI-->>Func: FETCH vSalary
-    Func-->>Proc: RETURN calculated vSalary
-    
-    Proc->>ER: INSERT INTO employeeRecords(...)
-    Note right of ER: Inkluderer formatert tlf via convertPhone()
+    EMP->>ELOG: Register  turnus start and end Time
+    ELOG->>EMP: Confirm log entry
+    EMP->>OCC: Checks occupation details
+    OCC->>ACC: Updates accounting records
+    ACC->>EMP: Updates salary information
+    EMP->>PR: Updates patient relationships
 ```
