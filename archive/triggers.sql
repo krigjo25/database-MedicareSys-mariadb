@@ -4,13 +4,6 @@ This file contains the triggers which is used in the project
 
 ***************************************************************/
 
-/*************************** TriggerPDF **********************
-
-This trigger, will trigger a new creation of a pdf file, when
-a new patient is added to the database.
-x
-***********************************************************/
-DELIMITER x
 
 /*************************** Employees **********************
 
