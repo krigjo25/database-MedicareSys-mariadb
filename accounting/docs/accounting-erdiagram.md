@@ -27,6 +27,16 @@ erDiagram
         DATE billing_date "NOT NULL"
     }
 
+    PayRoll {
+        INT id PK "AUTO INCREMENT"
+        INT employeeID FK "Refrence to Employee"
+        INT monthly_hours "NOT NULL"
+        INT monthly_sickDays "NOT NULL"
+        INT monthly_hoursAbcence "NOT NULL"
+        INT Ammount "NOT NULL"
+        BOOLEAN paid "NOT NULL DEFAULT FALSE"
+
+    }
     classDef default color: #f5f5f5, stroke: #D3D3D3, stroke-width:1px
     classDef highlight color: #f5f5f5, stroke: #007acc, stroke-width:3px
 
