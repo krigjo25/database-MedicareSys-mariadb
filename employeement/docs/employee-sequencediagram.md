@@ -4,7 +4,7 @@ title: "Employee database relationship Sequence Diagram"
 ---
 sequenceDiagram
     participant EMP as employee(Table)
-    participant ELOG as EmployeeLog(Table)
+    participant ELOG as Turnus(Table)
     participant OCC as Occupation(Table)
     participant ACC as Accounting(Table)
     participant PR as Patient_Relationship(Table)
