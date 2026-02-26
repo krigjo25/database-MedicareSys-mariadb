@@ -6,7 +6,7 @@
     CALL newPatient ('Aaron C. Crowder', '1960-09-07', '624492945', 'M', '7147672206', '178 Alpaca Way', 91505 , 103.6, 178,'O-');
     CALL newPatient ('Benjamin Z. Krieger' , '1970-05-19' , '024078901', 'M' , '7813863968', '2586 Romano Street', 02154 , 75.7, 176,'B+');
     CALL newPatient ('Donald H. Reed' , '1983-02-25' , '217696608', 'M', '2404653677', '747 Pine Tree Lane', 20191 , 108.1, 165,'A-');
-    --CALL newPatient ('Geraldine J. Egerton' , '2000-11-02' , '171014356', 'F', '7243752103', '3426 Stuart Street', 15001 , 73.39, 162,'A+');
+    CALL newPatient ('Geraldine J. Egerton' , '2000-11-02' , '171014356', 'F', '7243752103', '3426 Stuart Street', 15001 , 73.39, 162,'A+');
     CALL newPatient ('Rober L. Cooper', '1980-02-11', '635626170', 'M', '9565510901', '3681 Seth Street', 76901 , 108, 185,'B+');
     CALL newPatient ('Ivan S. Miller' , '1988-04-15' , '253462254', 'M' , '6787085679', '900 Kuhl Avenue', 30329 , 91.9, 176,'O+');
     CALL newPatient ('Jose J. Zuniga' , '1991-06-26' , '619927888', 'M' , '5627533058', '2828 Kerry Way', 90808 , 70.3, 187,'AB');
