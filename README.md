@@ -1,7 +1,6 @@
 # Hospital Management System (HMS)
 
 ## 🚀 Tech Stack
-
 - **Database:** MariaDB (SQL)
 - **Backend:** Python 3 (ReportLab, MariaDB-connector)
 - **Automation:** SQL Procedures, Triggers, Events, Views
@@ -20,36 +19,34 @@ A comprehensive hospital administration system designed to streamline medical re
 ---
 
 ## 📂 Database Architecture
-The system is modularized into four primary databases to optimize maintenance and data integrity:
+The system is modularized into five primary databases to optimize maintenance and data integrity:
 
-1. **patientRegistration**: Manages personal profiles and automated billing.
-2. **patientRecords**: Contains dynamic, SSN-indexed tables for individualized health data.
-3. **employment**: Tracks staff records, shifts (`Turnus`), and doctor-patient relations.
-4. **hospitalManageSystem**: Handles infrastructure (rooms/floors), medicine inventory, and booking.
-5. **Archive**: Stores historical data for terminated staff and processed invoices.
+1. **[patientRegistration](patientRegistration/)**: Manages personal profiles and automated billing.  
+   - See [patientRegistration/docs/README.md](patientRegistration/docs/README.md) for details.
+2. **[patientRecords](patientRecords/)**: Contains dynamic, SSN-indexed tables for individualized health data.
+3. **[employeement](employeement/)**: Tracks staff records, shifts (`Turnus`), and doctor-patient relations.  
+   - See [employeement/docs/Employee.md](employeement/docs/Employee.md) for details.
+4. **[hos-system](hos-system/)**: Handles infrastructure (rooms/floors), medicine inventory, and booking.
+5. **[archive](archive/)**: Stores historical data for terminated staff and processed invoices.  
+   - See [archive/docs/README.md](archive/docs/README.md) for details.
+
+For a visual overview and directory structure, see [docs/architecture.md](docs/architecture.md).
 
 ---
 
 ## 📚 Key Documentation
-
-- [architecture.md](architecture.md): System architecture overview and directory structure
+- [docs/architecture.md](docs/architecture.md): System architecture overview and directory structure
 - [docs/TheCase.md](docs/TheCase.md): Project case description
 - [lib/databasePython.py](lib/databasePython.py): Python database connector
 - [lib/patientJournal.py](lib/patientJournal.py): PDF generation logic
 - [lib/customFunctions.py](lib/customFunctions.py): Custom Python utilities
 - [databases.sql](databases.sql): Database initialization script
-- [accounting/docs/accounting-erdiagram.md](accounting/docs/accounting-erdiagram.md): Accounting ER diagram
-- [archive/docs/archive-erdiagram.md](archive/docs/archive-erdiagram.md): Archive ER diagram
-- [employeement/docs/employee-erdiagram.md](employeement/docs/employee-erdiagram.md): Employee ER diagram
-- [HospitalManagementSystem/docs/hos-erdiagram.md](HospitalManagementSystem/docs/hos-erdiagram.md): Hospital ER diagram
-- [patientRegistration/docs/patient-erdiagram.md](patientRegistration/docs/patient-erdiagram.md): Patient ER diagram
 
 For additional diagrams and documentation, see each module's `docs/` subfolder.
 
 ---
 
 ## ⚙️ Key Technical Features
-
 ### SQL Automation
 * **Procedures**: Automated registration of patients (`newpatient`), staff (`newemployee`), and room bookings (`bookRoom`).
 * **Triggers**: Automated PDF generation upon registration and archive migration for billing status changes.

@@ -1,5 +1,14 @@
 # Hospital Management System Documentation
 
+---
+
+## 📊 Diagrams
+
+- [hos-erdiagram.md](hos-erdiagram.md): Entity Relationship Diagram for hospital tables
+- [hos-sequencediagram.md](hos-sequencediagram.md): Sequence Diagram for hospital operations
+- [hos-statediagram.md](hos-statediagram.md): State Diagram for hospital logic
+- [medication-sequencediagram.md](medication-sequencediagram.md): Sequence Diagram for medication management
+
 ## 1. Clinical Intelligence
 ### Diagnosis, Allergies & Medicine
 - **Resource Repositories**: Dynamic tables for diseases, allergies, and medicines allow doctors to retrieve data for sick notes and medical documents.
@@ -15,6 +24,7 @@
   - 100–199: First Floor
   - 200–299: Second Floor
   - 300–399: Third Floor
+  
 ### Room Administration
 - Procedures:
   - `firstFloor`, `secondFloor`, `thirdFloor`: Assign IDs and names to rooms

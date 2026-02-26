@@ -11,9 +11,11 @@
 
 ### 3. Automated Monitoring
 * **Payment Verification Event**: An automated event is scheduled to verify whether patients have paid their respective bills.
-**Event**
+* **Event** : An event will be triggered to check whether the patient has paid the given bill.
 
-* An event will be trigged to check wheter the patient has paid the given bill.
-[Visualization over Tables](./archive-erdiagram.md)
-[Visualization over sequences](./archive-sequencediagram.md)
+---
+
+## 📊 Diagrams
+- [archive-erdiagram.md](archive-erdiagram.md): Entity Relationship Diagram for archive tables
+- [archive-sequencediagram.md](archive-sequencediagram.md): Sequence Diagram for archive triggers and events
 
