@@ -30,3 +30,11 @@
 * **Overdue and Payment Triggers**:
     * **Automation**: An event monitors the due date; if missed, it triggers a new overdue notice and adds a fine.
     * **Archiving**: Records are triggered into the `credited` table if overdue, or the `paidBillings` table upon successful payment.
+
+---
+
+## 📊 Diagrams & Documents
+
+- [patient-erdiagram.md](patient-erdiagram.md): Entity Relationship Diagram for patient tables
+- [patientJournal.odt](patientJournal.odt): Patient Journal (OpenDocument)
+- [patientJournal.pdf](patientJournal.pdf): Patient Journal (PDF)
