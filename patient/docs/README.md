@@ -36,5 +36,7 @@
 ## 📊 Diagrams & Documents
 
 - [patient-erdiagram.md](patient-erdiagram.md): Entity Relationship Diagram for patient tables
+- [patient-flowchartdiagram.md](patient-flowchartdiagram.md): Flowchart Diagram for patient processes
+- [patient-sequencediagram.md](patient-sequencediagram.md): Sequence Diagram for patient operations
 - [patientJournal.odt](patientJournal.odt): Patient Journal (OpenDocument)
 - [patientJournal.pdf](patientJournal.pdf): Patient Journal (PDF)

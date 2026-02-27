@@ -7,6 +7,7 @@ erDiagram
     Patient ||--o{ PatientAlergy : "Has many"
     Patient ||--o{ PatientMedication : "Uses many"
     Patient ||--o{ Billing : "Has one"
+    Patient ||--o{ Relation : "Has one"
     
     Patient {
         BIGINT patientID PK "UNSIGNED AUTO INCREMENT"
@@ -41,6 +42,7 @@ erDiagram
     classDef default color: #f5f5f5, stroke: #D3D3D3, stroke-width:1px
     classDef highlight color: #f5f5f5, stroke: #007acc, stroke-width:3px
 
+    Relation::: regular
     Billing::: regular
     Patient ::: highlight
 ```
