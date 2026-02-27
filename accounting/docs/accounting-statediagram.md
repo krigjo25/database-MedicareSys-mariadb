@@ -1,6 +1,6 @@
 ```mermaid
 ---
-title: accounting flow
+title: accounting State Diagram
 ---
 stateDiagram-v2
 [*] --> billing
