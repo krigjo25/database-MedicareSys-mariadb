@@ -19,6 +19,13 @@
    - Creation Procedure (addNewOccupation): This procedure accepts a yearly salary as input and automatically calculates the corresponding monthly and hourly rates .
    - Update Procedure (editYearlySalary): When a yearly salary is modified, this procedure recalculates the monthly and hourly rates instantly to ensure all financial data remains synchronized .
 
-[Visualization of Tables](./employee-erdiagram.md)
-[Visualization of Sequences](./employee-sequencediagram.md)
-[Visualization of state](./employee-statediagram.md)
+## 📊 Diagrams
+
+- [employee-erdiagram.md](employee-erdiagram.md): Entity Relationship Diagram for employee tables
+- [employee-sequencediagram.md](employee-sequencediagram.md): Sequence Diagram for employee operations
+- [employee-statediagram.md](employee-statediagram.md): State Diagram for employee logic
+
+### All Diagram Files
+- [employee-erdiagram.md](employee-erdiagram.md)
+- [employee-sequencediagram.md](employee-sequencediagram.md)
+- [employee-statediagram.md](employee-statediagram.md)
