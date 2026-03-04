@@ -1,0 +1,21 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "mtxr.sqltools",
+      "bierner.markdown-mermaid"
+    ]
+  },
+  "settings": {
+    "conventionalCommits.scopes": [
+      "Library",
+      "Types",
+      "Workspace"
+    ]
+  }
+}
