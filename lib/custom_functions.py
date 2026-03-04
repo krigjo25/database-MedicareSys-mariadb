@@ -1,34 +1,20 @@
-#   Python responsories
+#   Python Libraries
+import datetime
 from os import getenv
-from datetime import datetime, date
 
-from pylib.databasePython import MariaDB
-
-
-#   dotenv Responsories
+#   Third party libraries
 from dotenv import load_dotenv
-
-
 load_dotenv()
+
+#   Internal Libraries
+from lib.database_connection import MariaDB
 
 
 class Calculators():
 
-    '''         Calculators     
+    def __init__(self): pass
 
-        Calculate age
-            Calculate a age type : yyyy-dd-mm
-        
-        Calculate bmi :
-            Calculates the bmi
-    '''
-
-    def __init__(self):
-        #   Initializing the classes
-
-        pass
-
-    def CalculateAge(self, birthDate):
+    def CalculateAge(self, birthDate:datetime.date) -> int:
 
         '''         calculateAge     
         
@@ -40,79 +26,50 @@ class Calculators():
         '''
 
         #   Converting the date into a string, then back to a date
-        birthDate = str(birthDate)
-        birthDate = datetime.strptime(birthDate, '%Y-%d-%m').date()
+        birthDate:str = str(birthDate)
+        birthDate:datetime.date = datetime.datetime.strptime(birthDate, '%Y-%d-%m').date()
 
         #   Get the today's date
-        curDate = date.today()
+        today = datetime.date.today()
 
         #   Calculate the difference in years
-        difference = curDate.year - birthDate.year  
-
-        #   
-        oneOrZero = ((curDate.month, curDate.day) < (birthDate.month, birthDate.day))
+        difference = today.year - birthDate.year  
+        oneOrZero = ((today.month, today.day) < (birthDate.month, birthDate.day))
 
         #   Age equals the difference - one or zero
-        age = difference - oneOrZero
+        return difference - oneOrZero
 
-        return age
+    def Calculatebmi(self, kg:int, cm:int, age:int, gender:str) -> str:
 
-    def Calculatebmi(self, kg, cm, age, gender):
-
-        '''         calculatebmi
-        
-            Calculates bmi for adults and children
-
-            Childrens 2-20
-            kg / (m * m) * 10000
-
-            Adults 20+
-            kg / (m * m)
-
-
-        '''
-
-        #   Convert the height in meters
+        #   Convert heights
         m = cm / 100
 
-        # Converts the weight into a integer
-        kg = int(kg)
-
         #   Finds the bmi by dividing  with age and gender
-        if age < 21 and gender == 'M':
-            
-            bmi = kg / (m * m) * 10000
+        bmi: float = 0
+        if age < 21 and gender == 'M': bmi = kg / (m * m) * 10000
 
-        elif age < 21 and gender == 'F':
+        elif age < 21 and gender == 'F': bmi = kg / (m * m) * 10000
 
-            bmi = kg / (m * m) * 10000
-
-        elif age > 20 and gender =='F':
-            bmi = kg / (m * m)
-        else:
-            #   Else we assume its a Male, above 20
-            bmi = kg / (m * m)
+        elif age > 20 and gender =='F': bmi = kg / (m * m)
+        else: bmi = kg / (m * m)
 
         bmi = round(bmi, 2)
 
         # Checking the body's condition
         #   Checking if the bmi is below 18.5
-        if bmi < 18.5:
-            bmi = f'{bmi}, UW'
+        message:str = ''
+        if bmi < 18.5: message = f'{bmi}, UW'
 
         #   Checking if the bmi is equal to 18.5 or above
-        elif bmi == 18.5 and bmi < 25.1:
-            bmi = f'{bmi}, N' # Normal
+        elif bmi == 18.5 and bmi < 25.1: message = f'{bmi}, N' # Normal
 
         #   Checking if the bmi is equal 25.0 or above 18.5
-        elif bmi > 25.0 and bmi < 30.0:
-            bmi = f'{bmi}, OW'
+        elif bmi > 25.0 and bmi < 30.0: message = f'{bmi}, OW'
             
         #   Checking if the bmi is equal 25.0 or above 18.5
-        elif bmi > 30.0:
-            bmi = f'{bmi}, Obese'
+        elif bmi > 30.0: message = f'{bmi}, Obese'
 
-        return bmi
+        return message
 
 class Converters():
 
@@ -123,14 +80,11 @@ class Converters():
 
     '''
 
-    def __init__(self):
-        #   Initializing the classes
+    def __init__(self): pass
 
-        pass
+    def TrimValue(self, kwarg: list, kwargs: str) -> str:
 
-    def TrimValue(self, kwarg, kwargs):
-
-        kwarg = str(kwarg[0:3])
+        kwarg = str(kwarg[0:3]).split("-")
 
         kwargs = str(kwargs).replace("-", "")
         kwargs = str(kwargs[5:9])
@@ -141,12 +95,9 @@ class Converters():
 
 class Dictionaries():
 
-    def __init__(self):
-        pass
+    def __init__(self): pass
 
-
-
-    def AmericanPostalCodes(postalCode):
+    def AmericanPostalCodes(self, zip_code: int) -> str:
 
         '''         AmericanPostalCodes
 
@@ -158,20 +109,17 @@ class Dictionaries():
         '''
 
         #   Creating a list to walk through
-        zipCode = {
-                    0000:'Warshington',
-        }
-        
-        postalCode = zipCode.get(postalCode)
-        return postalCode
+        zip_map = { 0000:'Warshington' }
+
+        return zip_map.get(zip_code) or 'Not found'
 
 class UploadFile():
     def __init__(self):
 
         self.dc = MariaDB
-        self.database = database = getenv('database2')
+        self.database: str = getenv('database2', '')
 
-    def BinaryConverter(self, fName):
+    def BinaryConverter(self, fName: str) -> bytes:
 
         #   Converting data to binary format
         with open(fName, 'rb') as file:
@@ -179,25 +127,18 @@ class UploadFile():
             
         return binaryData
 
-    def generateBlob(self, query, photo):
-
-        file = self.BinaryConverter(photo)
-        bioData = self.BinaryConverter(photo, file)
-        
-        
-        
+    def generateBlob(self, query: str, path: str) -> bytes:
+        file: bytes = self.BinaryConverter(path,)
+    
         #   Converting information into tuple
-        query = query, photo
-        self.dc.updateTable(self.database, query)
+        query_tuple: tuple = (query, path)
+        self.dc.upsert_table(self.database, query_tuple)
 
-        return bioData
+        return file
 
-    def generatePDF(self, pdf, path):
+    def generatePDF(self, pdf: str, path: str) -> bytes:
 
-        #   Update a column
-        query = f' UPDATE patient SET pdf = "{pdf}" WHERE id = 100'
-        bioData =self.generateBlob(query, pdf)
-
-        return print(bioData)
+        query: str = f' UPDATE patient SET pdf = "{pdf}" WHERE id = 100'
+        return self.generateBlob(query, pdf)
 
 

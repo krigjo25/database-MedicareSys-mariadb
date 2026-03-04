@@ -9,9 +9,8 @@ sequenceDiagram
     Note over P, DB: Registering
     P->>DB: newPatient(pName, vssn, etc.)
     activate DB
-    DB->>DB: Generate table name (generateTableName)
-    DB->>PR: CALL newPatientRecord (Create SSN-based table)
     DB->>DB: Convert SSN & Phone (Format functions)
+    DB->>DB: INSERT into patientRegistrations
     DB-->>PDF: TRIGGER: triggerPDF (After INSERT)
     activate PDF
     PDF-->>P: Generate patientJournal.pdf
@@ -20,8 +19,8 @@ sequenceDiagram
     deactivate DB
 
     Note over P, PR: Treatment & Update
-    P->>PR: Performs procedure
-    PR->>PR: Updates automatically (Dynamic Updates)
+    P->>PR: newPatientRecord(patientID, procedure, etc.)
+    PR->>PR: INSERT record into patientRecords table
     P->>DB: modifyPatient(allergyID/diagnoseID)
     DB-->>PDF: EVENT: Regenerate PDF on update
 

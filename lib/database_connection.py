@@ -1,15 +1,14 @@
-#   Python responsories
-from sys import exit
+#   Python Libraries
 from os import getenv
+from typing import Any, Dict, List
 
-#   Database responsories
+#   Third party libraries
 import mariadb
-
-#   dotenv Responsories
 from dotenv import load_dotenv
+
 load_dotenv()
 
-#   Selecting, Inserting or updates a table
+
 class MariaDB():
 
     '''         mariaDB
@@ -40,38 +39,22 @@ class MariaDB():
             exit(1)
 
         return
-    def closeConnection (self):
+    def close_connection (self) -> None: self.conn.close()
 
-        #   Closing the connection to the database
-        self.conn.close()
+    def fetch_records (self, database: str, query: str) -> List[Dict[str, Any]]:
 
-
-        return
-
-    def selectFromTable (self, database, query):
-
-
-        #   Database selection
         self.conn.database = database
 
         #  Execute the query.
         self.cur.execute(query)
 
 
-        #   Fetching the sql selection
         sql = self.cur.fetchall()
 
-        #   Initializing a list to return
-        sqlData = []
-
-        #   append to the list
-        for i in sql:
-            sqlData.append(i)
-
-        #   Returning the values in sqlData
+        sqlData = [i for i in sql]
         return sqlData
 
-    def RowCount(self, database, query):
+    def row_count(self, database: str, query: str) -> int:
 
         #   Database selection
         self.conn.database = database
@@ -82,26 +65,21 @@ class MariaDB():
         #   Fetch the cursor
         self.cur.fetchall()
 
-        #   Counts the rows in the cursor
-        counter = self.cur.rowcount
+        return self.cur.rowcount
 
-        return counter
-
-    def updateTable (self, database, query):
+    def upsert_table (self, database: str, query: str) -> None:
 
         #   Database selection
         self.conn.database = database
 
         self.database = database
 
-        #   Executes the query and close the connection
-
         self.cur.execute(query)
-        self.conn.close()
+        self.close_connection()
 
         return
 
-    def callProcedure (self, database, query):
+    def call_procedure (self, database: str, query: str):
 
         #   Database Connection 
         self.conn.database = database
@@ -111,6 +89,4 @@ class MariaDB():
 
         return
 
-    def patientRecords(self):
-        pass
-        return
+    def fetch_patient_records(self): return
