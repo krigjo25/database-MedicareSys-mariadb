@@ -13,8 +13,8 @@ from os import getenv, getenv
 from dotenv import load_dotenv
 
 #   Library Responsories
-from pylib.databasePython import MariaDB
-from pylib.customFunctions import Dictionaries, Calculators
+from lib.database_connection import MariaDB
+from lib.custom_functions import Dictionaries, Calculators
 
 #   ReportLab Resposories
 from reportlab.lib.colors import blue
